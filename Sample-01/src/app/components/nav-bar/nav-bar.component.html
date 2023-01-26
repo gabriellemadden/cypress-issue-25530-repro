@@ -24,10 +24,10 @@
           <li class="nav-item">
             <a routerLink="/" class="nav-link">Home</a>
           </li>
-          <li class="nav-item" *ngIf="auth.isAuthenticated$ | async">
+          <li class="nav-item" *ngIf="isLoggedIn === true">
             <a routerLink="external-api" class="nav-link">External API</a>
           </li>
-          <li class="nav-item" *ngIf="auth.isAuthenticated$ | async">
+          <li class="nav-item" *ngIf="isLoggedIn === true">
             <button
               class="btn btn-link p-0"
               style="min-width: unset"
@@ -40,21 +40,6 @@
         </ul>
 
         <ul class="navbar-nav d-none d-md-block">
-          <!-- Login button: show if NOT authenticated -->
-          <li
-            class="nav-item"
-            *ngIf="(auth.isAuthenticated$ | async) === false"
-          >
-            <button
-              id="qsLoginBtn"
-              class="btn btn-primary btn-margin"
-              (click)="loginWithRedirect()"
-            >
-              Log in
-            </button>
-          </li>
-          <!-- / Login button -->
-
 
           <!-- Fullsize dropdown: show if authenticated -->
           <li
