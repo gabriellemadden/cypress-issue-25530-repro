@@ -3,6 +3,7 @@ import { faUser, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '@auth0/auth0-angular';
 import * as auth0 from 'auth0-js';
 import { DOCUMENT } from '@angular/common';
+import authConfig from '../../../../auth_config.json'
 
 @Component({
   selector: 'app-nav-bar',
@@ -16,8 +17,8 @@ export class NavBarComponent implements OnInit {
   isLoggedIn = false;
 
   webAuth = new auth0.WebAuth({
-    clientID: '{AUTH_CLIENTID}',
-    domain: '{AUTH_DOMAIN}',
+    clientID: authConfig.clientId,
+    domain: authConfig.domain,
     responseType: "token id_token",
     audience: "backend",
     scope: "openid profile",
